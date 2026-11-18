@@ -16,6 +16,9 @@ local.properties
 *.class
 *.jar
 
+# Keep Xposed API jar (build dependency)
+!xposed-api-82.jar
+
 # Native / platform tools
 platform-tools/
 

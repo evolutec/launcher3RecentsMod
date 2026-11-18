@@ -27,11 +27,13 @@ jobs:
           distribution: temurin
           java-version: '25'
 
-      - name: List available SDK packages
+      - name: Install SDK components (platform android-37.0, build-tools 36.0.0)
         run: |
           export ANDROID_HOME="${ANDROID_HOME:-/usr/local/lib/android/sdk}"
+          export ANDROID_SDK_ROOT="$ANDROID_HOME"
           SDKMANAGER="$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager"
-          "$SDKMANAGER" --list 2>/dev/null | grep -iE "platforms;android-3[0-9]|build-tools;3[0-9]" | head -40
+          yes | "$SDKMANAGER" --licenses >/dev/null 2>&1 || true
+          "$SDKMANAGER" "platforms;android-37.0" "build-tools;36.0.0"
 
       - name: Build APK
         run: chmod +x build.sh && ./build.sh
