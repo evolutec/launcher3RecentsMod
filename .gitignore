@@ -29,5 +29,5 @@ Thumbs.db
 # Logs
 *.log
 
-# Misc
-dexdump.txt
+# Local agent instructions (not versioned)
+AGENTS.md
